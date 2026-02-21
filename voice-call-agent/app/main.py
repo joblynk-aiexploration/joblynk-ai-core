@@ -462,6 +462,83 @@ def _current_auth_password() -> str:
     return _load_auth_config()["password"]
 
 
+def _ensure_users_table() -> None:
+    conn = _db_conn()
+    if not conn:
+        return
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    create table if not exists public.screening_users (
+                      id bigserial primary key,
+                      email text unique not null,
+                      password text not null,
+                      created_at timestamptz default now(),
+                      updated_at timestamptz default now()
+                    )
+                    """
+                )
+    except Exception as e:
+        log_event(f"USERS_TABLE_ENSURE_FAIL | {e}")
+    finally:
+        conn.close()
+
+
+def _get_user_password(email: str) -> str:
+    target = (email or "").strip().lower()
+    if not target:
+        return ""
+    conn = _db_conn()
+    if not conn:
+        return ""
+    try:
+        with conn.cursor() as cur:
+            cur.execute("select password from public.screening_users where email=%s limit 1", (target,))
+            row = cur.fetchone()
+            return str(row[0] or "") if row else ""
+    except Exception as e:
+        log_event(f"USERS_LOOKUP_FAIL | {e}")
+        return ""
+    finally:
+        conn.close()
+
+
+def _user_exists(email: str) -> bool:
+    return bool(_get_user_password(email))
+
+
+def _upsert_user(email: str, password: str) -> bool:
+    target = (email or "").strip().lower()
+    pwd = password or ""
+    if not target or not pwd:
+        return False
+    _ensure_users_table()
+    conn = _db_conn()
+    if not conn:
+        return False
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    insert into public.screening_users (email, password, updated_at)
+                    values (%s,%s,now())
+                    on conflict (email) do update set
+                      password=excluded.password,
+                      updated_at=now()
+                    """,
+                    (target, pwd),
+                )
+        return True
+    except Exception as e:
+        log_event(f"USERS_UPSERT_FAIL | {e}")
+        return False
+    finally:
+        conn.close()
+
+
 def _load_agent_profile() -> dict:
     default_profile = {
         "agent_name": "Adam",
@@ -673,7 +750,10 @@ def _is_authenticated(request: Request) -> bool:
     token = request.cookies.get(APP_SESSION_COOKIE, "")
     if not token:
         return False
-    return _session_email_from_token(token) == _current_auth_email()
+    email = _session_email_from_token(token)
+    if not email:
+        return False
+    return email == _current_auth_email() or _user_exists(email)
 
 
 @app.middleware("http")
@@ -1706,7 +1786,7 @@ def signup_submit(
     if not target or len(pwd) < 10 or pwd != cpwd:
         return RedirectResponse(url="/signup?status=error", status_code=303)
 
-    _save_auth_config(target, pwd)
+    _upsert_user(target, pwd)
     log_event(f"SIGNUP_CREATED email={target} name={(username or '').strip()[:80]}")
 
     ref = (ref_code or "").strip().upper()
@@ -1986,13 +2066,25 @@ def login_submit(request: Request, email: str = Form(...), password: str = Form(
     if _is_rate_limited(f"login:{ip}", limit=12, window_seconds=900):
         return RedirectResponse(url="/login?err=1", status_code=303)
 
+    target_email = (email or "").strip().lower()
+    target_password = password or ""
+
+    # Allow legacy single-admin auth config.
     auth_email = _current_auth_email()
     auth_password = _current_auth_password()
-    if (email or "").strip().lower() != auth_email or (password or "") != auth_password:
-        return RedirectResponse(url="/login?err=1", status_code=303)
-    resp = RedirectResponse(url="/ui", status_code=303)
-    resp.set_cookie(APP_SESSION_COOKIE, _session_token(auth_email), httponly=True, samesite="lax", secure=False, path="/")
-    return resp
+    if target_email == auth_email and target_password == auth_password:
+        resp = RedirectResponse(url="/ui", status_code=303)
+        resp.set_cookie(APP_SESSION_COOKIE, _session_token(target_email), httponly=True, samesite="lax", secure=False, path="/")
+        return resp
+
+    # Allow DB-backed user accounts (created by signup or billing automation).
+    user_password = _get_user_password(target_email)
+    if user_password and target_password == user_password:
+        resp = RedirectResponse(url="/ui", status_code=303)
+        resp.set_cookie(APP_SESSION_COOKIE, _session_token(target_email), httponly=True, samesite="lax", secure=False, path="/")
+        return resp
+
+    return RedirectResponse(url="/login?err=1", status_code=303)
 
 
 @app.post("/logout")
@@ -2001,6 +2093,68 @@ def logout():
     resp = RedirectResponse(url="/login", status_code=303)
     resp.delete_cookie(APP_SESSION_COOKIE, path="/")
     return resp
+
+
+@app.get("/admin/subscriptions", response_class=HTMLResponse)
+def admin_subscriptions_page(request: Request):
+    if not _is_authenticated(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    viewer = _session_email_from_token(request.cookies.get(APP_SESSION_COOKIE, ""))
+    if viewer != _current_auth_email():
+        return HTMLResponse("<h3>Forbidden</h3><p>Admin access required.</p>", status_code=403)
+
+    rows: list[tuple] = []
+    conn = _db_conn()
+    try:
+        if conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    select coalesce(customer_email,''), coalesce(stripe_subscription_id,''), coalesce(stripe_price_id,''),
+                           coalesce(status,''), created_at, updated_at
+                    from public.stripe_subscriptions
+                    order by updated_at desc
+                    limit 200
+                    """
+                )
+                rows = cur.fetchall() or []
+    except Exception as e:
+        log_event(f"ADMIN_SUBSCRIPTIONS_LOAD_FAIL | {e}")
+    finally:
+        if conn:
+            conn.close()
+
+    body_rows = "".join(
+        f"<tr><td>{html.escape(str(r[0] or ''))}</td><td>{html.escape(str(r[1] or ''))}</td><td>{html.escape(str(r[2] or ''))}</td><td>{html.escape(str(r[3] or ''))}</td><td>{html.escape(str(r[4] or ''))}</td><td>{html.escape(str(r[5] or ''))}</td></tr>"
+        for r in rows
+    )
+    if not body_rows:
+        body_rows = "<tr><td colspan='6'>No subscriptions found yet.</td></tr>"
+
+    html_doc = f"""
+<!doctype html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width,initial-scale=1'/><title>Admin Subscriptions</title>
+<style>
+body{{font-family:Inter,Segoe UI,Arial,sans-serif;background:#f6f8ff;color:#0f172a;margin:0}}
+.wrap{{max-width:1200px;margin:24px auto;padding:0 14px}}
+.card{{background:#fff;border:1px solid #e5ebff;border-radius:14px;padding:14px;box-shadow:0 8px 20px rgba(31,58,118,.08)}}
+table{{width:100%;border-collapse:collapse;font-size:13px}} th,td{{border-bottom:1px solid #eef2ff;padding:10px;text-align:left;vertical-align:top}} th{{background:#f8faff}}
+a{{color:#0b5fff;text-decoration:none;font-weight:700}}
+</style></head><body>
+<div class='wrap'>
+  <p><a href='/ui'>← Back to dashboard</a></p>
+  <div class='card'>
+    <h2 style='margin:0 0 8px 0'>Admin • Subscriptions</h2>
+    <p style='margin:0 0 12px 0;color:#5b6b83'>Latest Stripe subscriptions synced via webhook.</p>
+    <table>
+      <thead><tr><th>Email</th><th>Subscription ID</th><th>Price ID</th><th>Status</th><th>Created</th><th>Updated</th></tr></thead>
+      <tbody>{body_rows}</tbody>
+    </table>
+  </div>
+</div>
+</body></html>
+"""
+    return HTMLResponse(html_doc, headers={"Cache-Control": "no-store"})
 
 
 @app.post("/call/start")

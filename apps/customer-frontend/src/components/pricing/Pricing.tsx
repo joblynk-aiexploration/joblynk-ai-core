@@ -113,7 +113,7 @@ const Pricing = () => {
                     </div>
                     <div>
                       <p className="text-tagline-1 text-accent/60 mb-3 font-medium">Advanced</p>
-                      <h3 className="text-heading-5 text-accent font-normal">$99</h3>
+                      <h3 className="text-heading-5 text-accent font-normal">$199</h3>
                       <p className="text-accent/60">Plans for advanced users</p>
                     </div>
                     <form method="post" action="/api/stripe/checkout" className="relative z-10">
