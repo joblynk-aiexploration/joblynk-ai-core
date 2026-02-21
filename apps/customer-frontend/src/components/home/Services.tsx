@@ -11,11 +11,11 @@ const Services = () => {
           </RevealAnimation>
           <div>
             <RevealAnimation delay={0.3}>
-              <h2 className="mb-3">AI services that deliver real results.</h2>
+              <h2 className="mb-3">Hiring services designed for real screening outcomes.</h2>
             </RevealAnimation>
             <RevealAnimation delay={0.4}>
               <p className="mx-auto max-w-[600px]">
-                From consulting to implementation, our solutions are built to transform the way you work.
+                From process design to implementation, our solutions modernize how teams source, screen, and select talent.
               </p>
             </RevealAnimation>
           </div>
@@ -28,10 +28,9 @@ const Services = () => {
                 <span className="ns-shape-8 text-secondary dark:text-accent text-[52px]" />
               </div>
               <div className="space-y-2">
-                <h5 className="max-sm:text-heading-6">Real-time data analytics and visualization.</h5>
+                <h5 className="max-sm:text-heading-6">Real-time screening analytics and reporting.</h5>
                 <p className="max-w-[430px]">
-                  Speed up your journey with real-time data analytics to bring your ideas to life and make informed
-                  decisions.
+                  Turn interview and assessment activity into actionable insight for faster, evidence-based hiring decisions.
                 </p>
               </div>
             </div>
@@ -42,8 +41,8 @@ const Services = () => {
                 <span className="ns-shape-35 text-secondary dark:text-accent text-[52px]" />
               </div>
               <div className="space-y-2">
-                <h5 className="max-sm:text-heading-6">AI-powered apps.</h5>
-                <p>Use AI applications to boost workflow automation and improve efficiency.</p>
+                <h5 className="max-sm:text-heading-6">AI-powered screening workflows.</h5>
+                <p>Use AI-assisted scoring and evaluation flows to reduce manual effort and improve consistency.</p>
               </div>
             </div>
           </RevealAnimation>
@@ -53,9 +52,9 @@ const Services = () => {
                 <span className="ns-shape-41 text-secondary dark:text-accent text-[52px]" />
               </div>
               <div className="space-y-2">
-                <h5 className="max-sm:text-heading-6">End-to-end AI consulting.</h5>
+                <h5 className="max-sm:text-heading-6">End-to-end hiring process consulting.</h5>
                 <p className="max-w-[430px]">
-                  Discover your business&apos;s potential with our AI consulting services.
+                  Define role-specific screening frameworks and hiring playbooks tailored to your organization.
                 </p>
               </div>
             </div>
@@ -66,9 +65,9 @@ const Services = () => {
                 <span className="ns-shape-19 text-secondary dark:text-accent text-[52px]" />
               </div>
               <div className="space-y-2">
-                <h5 className="max-sm:text-heading-6">Machine learning model development.</h5>
+                <h5 className="max-sm:text-heading-6">Assessment and scoring model customization.</h5>
                 <p className="max-w-[430px]">
-                  Quickly develop tools, platforms, and educational applications for machine learning model creation.
+                  Configure role-based rubrics, weighted scoring, and evaluation logic that align with your hiring standards.
                 </p>
               </div>
             </div>
@@ -79,7 +78,7 @@ const Services = () => {
             <LinkButton
               href="/contact-us"
               className="btn btn-secondary hover:btn-primary dark:btn-transparent dark:border-primary-50 btn-md mx-auto w-[85%] md:w-auto">
-              Talk to an expert
+              Talk to our team
             </LinkButton>
           </div>
         </RevealAnimation>

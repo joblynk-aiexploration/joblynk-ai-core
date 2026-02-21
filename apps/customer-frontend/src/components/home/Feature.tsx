@@ -19,12 +19,12 @@ const Feature = () => {
           </RevealAnimation>
           <div>
             <RevealAnimation delay={0.3}>
-              <h2 className="mb-3">Automation that fits your needs.</h2>
+              <h2 className="mb-3">Screening workflows built for hiring teams.</h2>
             </RevealAnimation>
             <RevealAnimation delay={0.4}>
               <p className="text-secondary/60 dark:text-accent/60 mx-auto max-w-[600px]">
-                Powerful tools to streamline operations and boost efficiency. Automate tasks with JobLynk and focus on
-                what matters.
+                Practical tools to evaluate candidates consistently, reduce manual review effort, and move qualified
+                talent through your pipeline faster.
               </p>
             </RevealAnimation>
           </div>
@@ -34,10 +34,10 @@ const Feature = () => {
           <RevealAnimation delay={0.5}>
             <div className="bg-background-3 dark:bg-background-7 col-span-12 space-y-6 rounded-[20px] p-8 md:col-span-6 lg:col-span-8">
               <div className="space-y-2">
-                <h5 className="max-sm:text-heading-6">Smart analytics with real-time insights.</h5>
+                <h5 className="max-sm:text-heading-6">Live candidate funnel and score analytics.</h5>
                 <p className="max-w-[450px]">
-                  Stay in the loop and make better choices with awesome, built-in analytics that give you real-time
-                  insights.
+                  Track pass rates, skill trends, and stage conversion in real time so hiring teams can quickly adapt
+                  screening strategy and improve outcomes.
                 </p>
               </div>
               <figure className="w-full">
@@ -57,8 +57,8 @@ const Feature = () => {
           <RevealAnimation delay={0.6}>
             <div className="bg-background-3 dark:bg-background-7 col-span-12 space-y-6 rounded-[20px] p-8 md:col-span-6 lg:col-span-4">
               <div className="space-y-2">
-                <h5 className="max-sm:text-heading-6">Seamless system integrations.</h5>
-                <p className="max-w-[220px]">Want it even shorter? Here’s a super chill version!</p>
+                <h5 className="max-sm:text-heading-6">Seamless ATS and workflow integrations.</h5>
+                <p className="max-w-[220px]">Connect existing hiring tools without disrupting current processes.</p>
               </div>
               <figure className="w-full">
                 <Image
@@ -77,8 +77,8 @@ const Feature = () => {
           <RevealAnimation delay={0.7}>
             <div className="bg-background-3 dark:bg-background-7 col-span-12 space-y-6 rounded-[20px] p-8 md:col-span-6 lg:col-span-4">
               <div className="space-y-2">
-                <h5 className="max-sm:text-heading-6">Clear dashboards for visibility.</h5>
-                <p className="">Track everything at a glance with clean, easy-to-use dashboards.</p>
+                <h5 className="max-sm:text-heading-6">Clear role-level screening dashboards.</h5>
+                <p className="">Give recruiters and hiring managers a shared view of candidate progress and quality.</p>
               </div>
               <figure className="w-full">
                 <Image
@@ -97,9 +97,9 @@ const Feature = () => {
           <RevealAnimation delay={0.8}>
             <div className="bg-background-3 dark:bg-background-7 col-span-12 space-y-6 rounded-[20px] p-8 md:col-span-6 lg:col-span-8">
               <div className="max-w-[285px] space-y-2">
-                <h5 className="max-sm:text-heading-6">Durable, secure platforms.</h5>
+                <h5 className="max-sm:text-heading-6">Secure, scalable hiring infrastructure.</h5>
                 <p className="max-w-[311px]">
-                  Grow with confidence on a platform that&apos;s secure, stable, and built for the future.
+                  Run screening operations confidently on a reliable platform built for security, scale, and long-term growth.
                 </p>
               </div>
               <figure className="w-full">

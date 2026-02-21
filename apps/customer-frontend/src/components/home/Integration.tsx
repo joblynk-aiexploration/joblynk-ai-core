@@ -27,11 +27,11 @@ const Integration = () => {
                 <span className="badge badge-green mb-5">Process</span>
               </RevealAnimation>
               <RevealAnimation delay={0.3}>
-                <h2 className="mb-3 max-w-[529px]">Why thousands trust us for their apps.</h2>
+                <h2 className="mb-3 max-w-[529px]">Why teams trust JobLynk for technical screening.</h2>
               </RevealAnimation>
               <RevealAnimation delay={0.4}>
                 <p className="mb-7 lg:max-w-[620px]">
-                  We streamline automation for a strategic and sustainable AI transition.
+                  We streamline candidate evaluation with a consistent process from intake to final decision.
                 </p>
               </RevealAnimation>
               <RevealAnimation delay={0.5}>
@@ -40,7 +40,7 @@ const Integration = () => {
                     href="/process"
                     rel="noopener noreferrer"
                     className="btn btn-secondary hover:btn-primary dark:btn-transparent btn-md mx-auto w-[85%] md:w-auto">
-                    Get started
+                    Explore process
                   </LinkButton>
                 </div>
               </RevealAnimation>
@@ -60,9 +60,9 @@ const Integration = () => {
                     </figure>
                     <figure className="dark:bg-background-5 space-y-6 rounded-xl bg-white p-8">
                       <figcaption className="space-y-2">
-                        <h5>Design tailored AI strategies.</h5>
+                        <h5>Define role-specific hiring criteria.</h5>
                         <p className="max-w-[250px]">
-                          Tailored AI strategies align solutions to drive smarter decisions.
+                          Build clear competencies and scorecards for each role before screening begins.
                         </p>
                       </figcaption>
                       <figure className="w-full max-w-[385px]">
@@ -87,8 +87,8 @@ const Integration = () => {
                     </figure>
                     <figure className="dark:bg-background-5 space-y-6 rounded-xl bg-white p-8">
                       <figcaption className="space-y-2">
-                        <h5>Monitor and optimize results.</h5>
-                        <p className="max-w-[250px]">Track performance and fine-tune your strategy.</p>
+                        <h5>Monitor pipeline quality and speed.</h5>
+                        <p className="max-w-[250px]">Track conversion, quality signals, and time-to-hire metrics continuously.</p>
                       </figcaption>
                       <div className="w-full max-w-[400px] overflow-hidden rounded-2xl">
                         <Image
@@ -117,8 +117,8 @@ const Integration = () => {
                     </figure>
                     <figure className="dark:bg-background-5 space-y-6 rounded-xl bg-white p-8">
                       <figcaption className="space-y-2">
-                        <h5>Know your goals</h5>
-                        <p className="max-w-[250px]">When you know your goals, you own your path.</p>
+                        <h5>Align on hiring outcomes</h5>
+                        <p className="max-w-[250px]">Set target skills, interview thresholds, and decision SLAs from day one.</p>
                       </figcaption>
                       <div className="w-full max-w-[400px] overflow-hidden rounded-2xl">
                         <Image
@@ -147,9 +147,9 @@ const Integration = () => {
                     </figure>
                     <figure className="dark:bg-background-5 space-y-6 rounded-xl bg-white p-8">
                       <figcaption className="space-y-2">
-                        <h5>Use smart automation.</h5>
+                        <h5>Automate repetitive screening tasks.</h5>
                         <p className="max-w-[250px]">
-                          Let automation handle the routine, so you can focus on strategy.
+                          Let automation handle scheduling, scoring, and routing so teams can focus on final hiring decisions.
                         </p>
                       </figcaption>
                       <div className="w-full max-w-[400px] overflow-hidden rounded-2xl">

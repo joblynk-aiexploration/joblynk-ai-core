@@ -10,11 +10,11 @@ const CTA = () => {
             <span className="badge badge-blur mb-5 text-ns-yellow">Get started</span>
           </RevealAnimation>
           <RevealAnimation>
-            <h2 className="mb-3 text-white">Let’s build a smarter tomorrow.</h2>
+            <h2 className="mb-3 text-white">Let’s build a smarter hiring pipeline.</h2>
           </RevealAnimation>
           <RevealAnimation>
             <p className="mb-6 text-white/60">
-              Start your aI journey with JobLynk and transform the way you work—forever.
+              Start your hiring transformation with JobLynk and turn screening into a strategic advantage.
             </p>
           </RevealAnimation>
           <RevealAnimation>
@@ -22,7 +22,7 @@ const CTA = () => {
               <LinkButton
                 href="/contact-us"
                 className="btn btn-primary btn-md w-[85%] md:w-auto hover:btn-white dark:hover:btn-accent">
-                Contact us now
+                Start hiring smarter
               </LinkButton>
             </div>
           </RevealAnimation>

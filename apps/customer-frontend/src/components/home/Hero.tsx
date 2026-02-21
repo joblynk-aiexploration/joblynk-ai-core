@@ -21,30 +21,30 @@ import LinkButton from '../ui/button/LinkButton';
 const benefits = [
   {
     id: 1,
-    text: 'Boost your business with AI.',
+    text: 'Screen candidates faster with AI-assisted technical evaluation.',
   },
   {
     id: 2,
-    text: 'Trusted by leading industries worldwide.',
+    text: 'Built for hiring teams, recruiters, and engineering leaders.',
   },
   {
     id: 3,
-    text: 'Start your AI journey today.',
+    text: 'Move from resume to shortlist with clarity and confidence.',
   },
 ];
 
 const experienceList = [
   {
     id: 1,
-    text: '8 years in creative direction, design & code',
+    text: 'Role-aligned screening workflows for modern engineering hiring.',
   },
   {
     id: 2,
-    text: 'Collaborated with over 50 brands in tech, fashion, and media',
+    text: 'Structured assessments, scorecards, and transparent candidate feedback.',
   },
   {
     id: 3,
-    text: 'Enthusiastic about typography, interaction, and minimalism',
+    text: 'Designed to reduce bias, improve consistency, and speed up decisions.',
   },
 ];
 
@@ -158,13 +158,13 @@ const Hero = () => {
         <div className="text-left max-lg:pt-[200px] max-md:pt-[150px] md:text-center">
           <RevealAnimation delay={0.2}>
             <h1 className="mb-4">
-              Automate smarter. <br className="hidden md:block" />
-              Grow faster.
+              Hire smarter. <br className="hidden md:block" />
+              Screen faster.
             </h1>
           </RevealAnimation>
           <RevealAnimation delay={0.3}>
             <p className="mx-auto mb-6 max-w-[650px]">
-              &nbsp;Save time and elevate your business with intelligent workflow automation from JobLynk.
+              &nbsp;Accelerate technical hiring with AI-assisted screening, role-based scoring, and streamlined candidate workflows from JobLynk.
             </p>
           </RevealAnimation>
           <ul className="mb-14 flex w-fit list-none flex-col gap-4 md:mx-auto md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-9 lg:flex-nowrap">
@@ -211,12 +211,12 @@ const Hero = () => {
             <div className="py-16 max-lg:px-5 max-sm:overflow-hidden lg:flex-1/2 lg:pl-14">
               <div className="mb-9">
                 <RevealAnimation delay={0.2}>
-                  <h2 className="mb-3">Innovate for Impact.</h2>
+                  <h2 className="mb-3">Talent intelligence for hiring impact.</h2>
                 </RevealAnimation>
                 <RevealAnimation delay={0.3}>
                   <p className="max-w-[530px]">
-                    At JobLynk, we leverage AI and strategic insight to enhance business performance. Partner with us
-                    to unlock your potential.
+                    At JobLynk, we combine AI screening, structured evaluation, and workflow automation to help teams
+                    identify top candidates faster and hire with confidence.
                   </p>
                 </RevealAnimation>
               </div>

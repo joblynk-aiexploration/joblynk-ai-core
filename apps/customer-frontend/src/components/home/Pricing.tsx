@@ -90,14 +90,13 @@ const Pricing = () => {
             <span className="badge badge-green mb-5">Pricing plans</span>
           </RevealAnimation>
           <RevealAnimation delay={0.3}>
-            <h2 className="mb-3">Plans that grow with you.</h2>
+            <h2 className="mb-3">Plans built for hiring scale.</h2>
           </RevealAnimation>
           <RevealAnimation delay={0.4}>
             <p className="mb-5 md:mb-7">
-              Flexible, transparent pricing for businesses of every size and stage.
+              Flexible, transparent pricing for teams of every size.
               <br className="hidden lg:block" />
-              Choose a plan that scales with you. Whether you’re a startup or an enterprise, JobLynk offers pricing
-              options that fit your goals and budget.
+              Choose a plan that matches your hiring volume, workflow complexity, and evaluation needs.
             </p>
           </RevealAnimation>
           <RevealAnimation delay={0.5}>

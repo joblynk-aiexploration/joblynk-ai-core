@@ -17,12 +17,12 @@ const Projects = () => {
           </RevealAnimation>
           <div className="space-y-3">
             <RevealAnimation delay={0.3}>
-              <h2>Proven AI solutions in action.</h2>
+              <h2>Proven screening projects in action.</h2>
             </RevealAnimation>
             <RevealAnimation delay={0.4}>
               <p className="mx-auto max-w-[680px]">
-                Discover how JobLynk is transforming businesses with tailored automation strategies. Explore our
-                portfolio to see the real-world impact we&apos;ve made for clients across various industries.
+                Discover how JobLynk helps teams improve technical hiring outcomes with structured screening and
+                candidate intelligence. Explore real implementations across different hiring scenarios.
               </p>
             </RevealAnimation>
           </div>
@@ -44,7 +44,7 @@ const Projects = () => {
                     <LinkButton
                       href={`/case-study/${featuredProjects[0].slug}`}
                       className="btn btn-md hover:btn-primary dark:btn-accent btn-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%-8px)] scale-95 transform-gpu opacity-0 transition-all duration-500 ease-out group-hover:-translate-y-1/2 group-hover:scale-110 group-hover:opacity-100">
-                      View Projects
+                      View Case Study
                     </LinkButton>
                   </div>
                   <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
@@ -71,7 +71,7 @@ const Projects = () => {
                     <LinkButton
                       href={`/case-study/${featuredProjects[1].slug}`}
                       className="btn btn-md hover:btn-primary dark:btn-accent btn-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%-8px)] scale-95 transform-gpu opacity-0 transition-all duration-500 ease-out group-hover:-translate-y-1/2 group-hover:scale-110 group-hover:opacity-100">
-                      View Projects
+                      View Case Study
                     </LinkButton>
                   </div>
                   <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
@@ -98,7 +98,7 @@ const Projects = () => {
                     <LinkButton
                       href={`/case-study/${featuredProjects[2].slug}`}
                       className="btn btn-md hover:btn-primary dark:btn-accent btn-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%-8px)] scale-95 transform-gpu opacity-0 transition-all duration-500 ease-out group-hover:-translate-y-1/2 group-hover:scale-110 group-hover:opacity-100">
-                      View Projects
+                      View Case Study
                     </LinkButton>
                   </div>
                   <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
@@ -125,7 +125,7 @@ const Projects = () => {
                     <LinkButton
                       href={`/case-study/${featuredProjects[3].slug}`}
                       className="btn btn-md hover:btn-primary dark:btn-accent btn-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%-8px)] scale-95 transform-gpu opacity-0 transition-all duration-500 ease-out group-hover:-translate-y-1/2 group-hover:scale-110 group-hover:opacity-100">
-                      View Projects
+                      View Case Study
                     </LinkButton>
                   </div>
                   <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">

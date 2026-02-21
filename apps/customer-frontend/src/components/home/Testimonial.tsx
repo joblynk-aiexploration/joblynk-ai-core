@@ -14,12 +14,12 @@ const Testimonial = () => {
       <div className="main-container">
         <div className="mb-10 flex flex-col items-center text-center md:mb-[70px]">
           <RevealAnimation delay={0.2}>
-            <h2 className="mx-auto mb-4 max-w-[750px]">What our clients are saying.</h2>
+            <h2 className="mx-auto mb-4 max-w-[750px]">What hiring teams are saying.</h2>
           </RevealAnimation>
           <RevealAnimation delay={0.3}>
             <p className="mx-auto max-w-[872px]">
-              Trusted by businesses worldwide to drive efficiency, accuracy, and results. Hear from our clients how
-              JobLynk helped them streamline operations, save time, and drive results through smart automation.
+              Trusted by teams that need faster, fairer, and more consistent technical hiring. Hear how JobLynk helps
+              organizations reduce screening bottlenecks and make better hiring decisions.
             </p>
           </RevealAnimation>
         </div>

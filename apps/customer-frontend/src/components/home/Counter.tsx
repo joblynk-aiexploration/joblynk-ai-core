@@ -7,11 +7,11 @@ const Counter = () => {
       <div className="main-container">
         <div className="text-center space-y-3 mb-10 md:mb-[70px]">
           <RevealAnimation delay={0.2}>
-            <h2>Success you can measure.</h2>
+            <h2>Hiring outcomes you can measure.</h2>
           </RevealAnimation>
           <RevealAnimation delay={0.3}>
             <p className="max-w-[680px] mx-auto">
-              Our numbers speak for themselves—consistent performance, happy clients, and cutting-edge delivery.
+              Track the impact of better screening with metrics that show speed, quality, and consistency across hiring stages.
             </p>
           </RevealAnimation>
         </div>

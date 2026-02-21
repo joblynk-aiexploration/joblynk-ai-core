@@ -12,7 +12,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: 'AI Agency | Joblynk Talent',
+  title: 'AI-Powered Technical Screening | JobLynk Talent',
 };
 
 const page = () => {
